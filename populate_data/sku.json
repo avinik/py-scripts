@@ -1,0 +1,43 @@
+[
+    {
+        "sku_code": "Sku_1",
+        "name": "Rohu",
+        "grade": "A",
+        "type": "Fresh",
+        "species": null,
+        "form": "frozen",
+        "processing_level": "whole",
+        "unit_of_measurement": "kg"
+    },
+    {
+        "sku_code": "Sku_2",
+        "name": "Katla",
+        "grade": "B",
+        "type": "Fresh",
+        "species": null,
+        "form": "frozen",
+        "processing_level": "whole",
+        "unit_of_measurement": "quantity"
+    },
+    {
+        "sku_code": "Sku_3",
+        "name": "Prawns",
+        "grade": "A",
+        "type": "Fresh",
+        "species": null,
+        "form": "frozen",
+        "processing_level": "whole",
+        "unit_of_measurement": "kg"
+    }, 
+
+    {
+        "sku_code": "Sku_4",
+        "name": "Salmon",
+        "grade": "A",
+        "type": "Fresh",
+        "species": null,
+        "form": "frozen",
+        "processing_level": "whole",
+        "unit_of_measurement": "kg"
+    }
+]
