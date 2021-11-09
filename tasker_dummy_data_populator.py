@@ -6,7 +6,6 @@ from typing import List
 import string
 
 
-
 sku_list = [
     {
         "sku_code": "Sku_1",
@@ -37,7 +36,7 @@ sku_list = [
         "form": "frozen",
         "processing_level": "whole",
         "unit_of_measurement": "kg"
-    }, 
+    },
 
     {
         "sku_code": "Sku_4",
@@ -52,8 +51,6 @@ sku_list = [
 ]
 
 
-
-
 def random_str(length: int) -> str:
     """
     Generate random Alphanumeric String of given length
@@ -61,8 +58,10 @@ def random_str(length: int) -> str:
     :return: random alphanumeric string of given size
     """
     return "".join(
-        [random.choice(string.ascii_letters + string.digits) for _ in range(length)]
+        [random.choice(string.ascii_letters + string.digits)
+         for _ in range(length)]
     )
+
 
 def populate_sku(sku_list):
     url = "http://cms.dev.captainfresh.in:80/api/skus"
@@ -92,7 +91,7 @@ def populate_sku(sku_list):
         json_reponse = response.json()
         skus.append(json_reponse)
     return skus
-        
+
 
 def populate_manaufacturing_order(order_list):
     url = "http://slash.dev.captainfresh.in:80/api/manufacturing-orders"
@@ -118,14 +117,12 @@ def populate_manaufacturing_order(order_list):
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
-        json_reponse = response.json() 
+        json_reponse = response.json()
         mfg_orders.append(json_reponse)
         print(payload)
         print(json_reponse)
 
     return mfg_orders
-
-        
 
 
 def populate_facility(facility_names: List[str]):
@@ -149,16 +146,16 @@ def populate_facility(facility_names: List[str]):
 
         response = requests.request("POST", url, headers=headers, data=payload)
         json_reponse = response.json()
-        facilities[json_reponse["id"]] = json_reponse["name"] 
-        
+        facilities[json_reponse["id"]] = json_reponse["name"]
+
     return facilities
 
 
 def populate_area(areas_to_add):
-    url = "http://fms.dev.captainfresh.in:80/api/areas" 
+    url = "http://fms.dev.captainfresh.in:80/api/areas"
     areas = []
     for area in areas_to_add:
-        creator_id = str(uuid.uuid1()) 
+        creator_id = str(uuid.uuid1())
         payload = json.dumps({
             "createdAt": "2021-07-26T01:17:24.648Z",
             "createdBy": creator_id,
@@ -175,17 +172,17 @@ def populate_area(areas_to_add):
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
-        json_reponse = response.json() 
+        json_reponse = response.json()
         areas.append(json_reponse)
 
     return areas
 
 
 def populate_workstation(workstation_to_add):
-    url = "http://fms.dev.captainfresh.in:80/api/workstations" 
+    url = "http://fms.dev.captainfresh.in:80/api/workstations"
     workstations = []
     for workstation in workstation_to_add:
-        creator_id = str(uuid.uuid1()) 
+        creator_id = str(uuid.uuid1())
         payload = json.dumps({
             "createdAt": "2021-07-26T01:17:24.648Z",
             "createdBy": creator_id,
@@ -202,17 +199,17 @@ def populate_workstation(workstation_to_add):
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
-        json_reponse = response.json() 
+        json_reponse = response.json()
         workstations.append(json_reponse)
 
     return workstations
 
 
 def populate_task(tasks_to_add):
-    url = "http://tasker-service.dev.captainfresh.in:80/api/tasks" 
+    url = "http://tasker-service.dev.captainfresh.in:80/api/tasks"
     tasks = []
     for task in tasks_to_add:
-        creator_id = str(uuid.uuid1()) 
+        creator_id = str(uuid.uuid1())
         payload = json.dumps({
             "createdAt": "2021-07-26T01:17:24.648Z",
             "createdBy": creator_id,
@@ -229,15 +226,16 @@ def populate_task(tasks_to_add):
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
-        json_reponse = response.json() 
+        json_reponse = response.json()
         tasks.append(json_reponse)
     return tasks
+
 
 def populate_activity(activities_to_add):
     url = "http://central-workflow.dev.captainfresh.in:80/api/activities"
     activities = []
     for activity in activities_to_add:
-        creator_id = str(uuid.uuid1())  
+        creator_id = str(uuid.uuid1())
         payload = json.dumps({
             "createdAt": "2021-07-26T01:17:24.648Z",
             "createdBy": creator_id,
@@ -251,9 +249,9 @@ def populate_activity(activities_to_add):
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
-        json_reponse = response.json() 
+        json_reponse = response.json()
         activities.append(json_reponse)
-    
+
     return activities
 
 
@@ -261,7 +259,7 @@ def populate_activity_workstation_mapping(activities_workstation_mapping_to_add)
     url = "http://fms.dev.captainfresh.in:80/api/activity-worksation-mappings"
     activity_workstation_mappings = []
     for mapping in activities_workstation_mapping_to_add:
-        creator_id = str(uuid.uuid1())  
+        creator_id = str(uuid.uuid1())
         payload = json.dumps({
             "createdAt": "2021-07-26T01:17:24.648Z",
             "createdBy": creator_id,
@@ -277,7 +275,7 @@ def populate_activity_workstation_mapping(activities_workstation_mapping_to_add)
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
-        json_reponse = response.json() 
+        json_reponse = response.json()
         activity_workstation_mappings.append(json_reponse)
 
     return activity_workstation_mappings
@@ -290,12 +288,10 @@ def main():
 
     print("here")
 
-
-
     # Populate facility
     facility_names = ["Banglore Bommasandra", "Manglore", "Banglore Rampura"]
     facilities = populate_facility(facility_names)
-    # for facility in facilities.keys(): 
+    # for facility in facilities.keys():
     #     print(facility)
 
     mfg_order_to_add = []
@@ -313,7 +309,8 @@ def main():
     populate_manaufacturing_order(mfg_order_to_add)
 
     areas_to_add = []
-    area_types = ["CLEANING_AREA", "CUTTING_AREA", "INWARD_AREA", "STORAGE_AREA"]
+    area_types = ["CLEANING_AREA", "CUTTING_AREA",
+                  "INWARD_AREA", "STORAGE_AREA"]
     for facility_id in facilities.keys():
         for area_type in area_types:
             areas_to_add.append({
@@ -321,20 +318,20 @@ def main():
                 "facility_id": facility_id,
                 "type": area_type
             })
-    areas = populate_area(areas_to_add) 
+    areas = populate_area(areas_to_add)
 
     # for area in areas:
     #     print(area)
 
     workstation_to_add = []
     for area in areas:
-        for i in range(1,random.randint(1,4)):
+        for i in range(1, random.randint(1, 4)):
             workstation_to_add.append({
                 "name": f"Workstation_{i}",
                 "area_id": area["id"],
                 "facility_id": area["facility"]["id"]
             })
-    
+
     workstations = populate_workstation(workstation_to_add)
     # for workstation in workstations:
     #     print(workstation)
@@ -360,8 +357,8 @@ def main():
     # for task in tasks:
     #     print(task)
 
-
-    activities_to_add = ["PICKING", "CUTTING", "CUTTING", "PACKING", "PRINTING"]
+    activities_to_add = ["PICKING", "CUTTING",
+                         "CUTTING", "PACKING", "PRINTING"]
     activities = populate_activity(activities_to_add)
     # for activity in activities:
     #     print(activity)
@@ -373,16 +370,13 @@ def main():
                 "activity_id": activity["id"],
                 "workstation_id": workstation["id"]
             })
-        
 
-    activities_workstation_mappings = populate_activity_workstation_mapping(activities_workstation_mapping_to_add)
+    activities_workstation_mappings = populate_activity_workstation_mapping(
+        activities_workstation_mapping_to_add)
 
     # for mapping in activities_workstation_mappings:
     #     print(mapping)
 
+
 if __name__ == "__main__":
-    main() 
-
-
-
-
+    main()

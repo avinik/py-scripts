@@ -1,13 +1,11 @@
+import pymysql
 
-db_credential = {
-    "DB_HOST": "erp-dev.cgfdix8vmrqt.ap-southeast-1.rds.amazonaws.com",
-    "DB_USER":  "erp_user",
-    "DB_PASSWORD": "C4pt41nFre5h1001"
-}
+from common.app_utils import app_utils
+
 
 def get_cursor(db_name="fms"):
     """Get SQL cursor"""
-    db_credential = app_utils.config.get(cursor_mapping[db_name])
+    db_credential = app_utils.config.get('DATABASE')
     conn = pymysql.connect(
         database=db_name,
         user=db_credential["DB_USER"],
